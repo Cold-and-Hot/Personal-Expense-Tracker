@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบบันทึกรายจ่ายส่วนตัว</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>💰 บันทึกรายจ่าย</h1>
+
+        <form id="expense-form" class="card">
+            <div class="form-group">
+                <label for="title">รายการ:</label>
+                <input type="text" id="title" placeholder="เช่น ค่ากาแฟ, ค่ารถ" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">จำนวนเงิน (บาท):</label>
+                <input type="number" id="amount" step="0.01" placeholder="0.00" required>
+            </div>
+            <div class="form-group">
+                <label for="category">หมวดหมู่:</label>
+                <select id="category">
+                    <option value="อาหาร">อาหาร</option>
+                    <option value="เดินทาง">เดินทาง</option>
+                    <option value="บันเทิง">บันเทิง</option>
+                    <option value="อื่นๆ">อื่นๆ</option>
+                </select>
+            </div>
+            <button type="submit" id="submit-btn">บันทึกรายการ</button>
+        </form>
+
+        <hr>
+
+        <div class="summary-card">
+            <h3>ยอดรวมทั้งหมด: <span id="total-amount">0.00</span> บาท</h3>
+        </div>
+
+        <div class="list-container">
+            <h2>รายการทั้งหมด</h2>
+            <table id="expense-table">
+                <thead>
+                    <tr>
+                        <th>วันที่</th>
+                        <th>รายการ</th>
+                        <th>หมวดหมู่</th>
+                        <th>จำนวนเงิน</th>
+                        <th>จัดการ</th>
+                    </tr>
+                    </tr>
+                </thead>
+                <tbody id="expense-list">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <h3>ยืนยันการลบ?</h3>
+            <p>คุณแน่ใจหรือไม่ที่จะลบรายการนี้? การกระทำนี้ไม่สามารถย้อนกลับได้</p>
+            <div class="modal-buttons">
+                <button id="confirm-delete" class="btn-danger">ลบเลย</button>
+                <button onclick="closeModal()" class="btn-secondary">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
